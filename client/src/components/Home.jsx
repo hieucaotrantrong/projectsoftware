@@ -239,16 +239,16 @@ export default function Home({ onFilterChange }) {
         const categoryValue = categoryMap[categoryLabel];
         if (categoryValue) {
             setSelectedCategory(categoryValue);
-            setSearchQuery(''); // Clear search khi chọn category
+            setSearchQuery(''); 
         }
     };
 
     return (
         <div>
-       
+
             <header className="w-full bg-[#ffd400]">
                 <div className="w-full max-w-[1280px] mx-auto flex items-center justify-between px-4 py-2">
-              
+
                     <div className="flex items-center flex-1 max-w-[600px]">
                         <img
                             src="/assets/logo.jpg"
@@ -451,7 +451,7 @@ export default function Home({ onFilterChange }) {
                                 ))}
                             </div>
                         </div>
-
+                       
                         {/* Footer */}
                         <div className="p-6 border-t">
                             <button
@@ -557,6 +557,9 @@ export default function Home({ onFilterChange }) {
                 </div>
 
             )}
+
+
+
         </div>
     );
 }

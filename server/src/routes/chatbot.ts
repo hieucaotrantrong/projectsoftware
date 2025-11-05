@@ -33,12 +33,12 @@ async function chatHandler(req: ChatRequest, res: Response): Promise<void> {
                 .replace(/có|không|cái|ko|những|các|sản phẩm|hay|là|nào|gì|thế|như|vậy/g, '')
                 .trim()
                 .split(' ')
-                .filter(word => word.length > 2); // Tăng từ 1 lên 2 để loại bỏ "nào"
+                .filter(word => word.length > 2);
             /*----------------------------------
             Handle response 
             -----------------------------------*/
             if (keywords.length > 0) {
-                // Đổi từ AND sang OR để tìm linh hoạt hơn
+
                 const searchQuery = keywords.map(() => 'LOWER(title) LIKE LOWER(?)').join(' OR ');
                 const searchParams = keywords.map(term => `%${term}%`);
 
@@ -60,7 +60,7 @@ async function chatHandler(req: ChatRequest, res: Response): Promise<void> {
                         response += `   - Giá khuyến mãi: ${product.price}đ\n`;
                         response += `   - Giảm giá: ${product.discount}%\n`;
                         if (product.tag) response += `   - Tag: ${product.tag}\n`;
-                        if (product.image) response += `   - Hình ảnh: ${product.image}\n`; // Thêm dòng này
+
                         response += '\n';
                     });
                     res.json({ text: response });
@@ -75,15 +75,18 @@ async function chatHandler(req: ChatRequest, res: Response): Promise<void> {
         /*----------------------------------
         handle question  Ai
         -----------------------------------*/
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+
         const result = await model.generateContent(prompt);
         const response = await result.response;
         res.json({ text: response.text() });
 
+
     } catch (error) {
         console.error('Chatbot error:', error);
 
-        // Xử lý lỗi rate limit của Google Generative AI
+        /*
+        */
         if (
             typeof error === 'object' &&
             error !== null &&
