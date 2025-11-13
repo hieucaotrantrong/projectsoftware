@@ -8,7 +8,7 @@ const OrderHistory = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [activeTab, setActiveTab] = useState('all'); // Thêm state cho tab
+    const [activeTab, setActiveTab] = useState('all'); 
 
     // Tabs cho phân loại đơn hàng
     const orderTabs = [
@@ -133,7 +133,7 @@ const OrderHistory = () => {
             <Home />
             <div className="min-h-screen bg-gray-50 py-8">
                 <div className="max-w-6xl mx-auto px-4">
-                    <h1 className="text-3xl font-bold text-gray-800 mb-8">📦 Lịch sử đơn hàng</h1>
+                    <h1 className="text-3xl font-bold text-gray-800 mb-8"> Lịch sử đơn hàng</h1>
 
                     {/* Tabs phân loại đơn hàng */}
                     <div className="bg-white rounded-lg shadow-sm mb-6">

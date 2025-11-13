@@ -239,7 +239,7 @@ export default function Home({ onFilterChange }) {
         const categoryValue = categoryMap[categoryLabel];
         if (categoryValue) {
             setSelectedCategory(categoryValue);
-            setSearchQuery(''); 
+            setSearchQuery('');
         }
     };
 
@@ -451,7 +451,7 @@ export default function Home({ onFilterChange }) {
                                 ))}
                             </div>
                         </div>
-                       
+
                         {/* Footer */}
                         <div className="p-6 border-t">
                             <button

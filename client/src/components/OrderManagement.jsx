@@ -82,7 +82,7 @@ const OrderManagement = () => {
 
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
-            <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-8">📦 Quản lý đơn hàng</h1>
+            <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-10"></h1>
 
             <div className="overflow-x-auto shadow rounded-lg">
                 <table className="min-w-full text-sm text-gray-800 bg-white border border-gray-200">
