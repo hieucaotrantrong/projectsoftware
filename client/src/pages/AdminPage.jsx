@@ -5,6 +5,7 @@ import SupportManagement from '../components/SupportManagement';
 import OrderManagement from '../components/OrderManagement';
 import WalletManagement from '../components/WalletManagement';
 import Footers from '../components/Footers';
+import AdminUsers from '../components/AdminUsers';
 import { TECarousel, TECarouselItem } from 'tw-elements-react';
 const AdminPage = () => {
     const [activeTab, setActiveTab] = useState('products');
@@ -137,7 +138,10 @@ const AdminPage = () => {
                             src="/assets/logo.jpg"
                             alt="logo"
                             className="h-10 object-contain mr-3 cursor-pointer"
-                            onClick={() => navigate('/')}
+                            onClick={() => {
+                                setActiveTab('products');
+                                navigate('/admin');
+                            }}
                         />
                     </div>
 
@@ -148,6 +152,7 @@ const AdminPage = () => {
                             { key: 'orders', label: 'Quản lý đơn hàng' },
                             { key: 'wallet', label: 'Quản lý ví' },
                             { key: 'support', label: 'Quản lý hỗ trợ' },
+                            { key: 'users', label: 'Quản lý người dùng' }, // <-- thêm
                         ].map((tab) => (
                             <button
                                 key={tab.key}
@@ -165,11 +170,11 @@ const AdminPage = () => {
                     {/* Nút đăng xuất */}
                     <button
                         onClick={handleLogout}
-                        className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg flex items-center gap-2 shadow-md transition-all duration-200"
+                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-full flex items-center gap-2 shadow-sm text-sm transition"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
+                            className="h-4 w-4"
                             viewBox="0 0 20 20"
                             fill="currentColor"
                         >
@@ -181,9 +186,10 @@ const AdminPage = () => {
                         </svg>
                         Đăng xuất
                     </button>
+
                 </header>
                 {/* Caursel  */}
-                <div className="mt-32 w-full max-w-[1200px] mx-auto">
+                <div className="mt-28 w-full max-w-[1700px] mx-auto">
                     <TECarousel ride="carousel" showIndicators showControls>
                         <div className="relative w-full h-64 overflow-hidden after:clear-both after:block after:content-['']">
 
@@ -359,6 +365,8 @@ const AdminPage = () => {
                 <OrderManagement />
             ) : activeTab === 'wallet' ? (
                 <WalletManagement />
+            ) : activeTab === 'users' ? (
+                <AdminUsers />
             ) : (
                 <SupportManagement />
             )}

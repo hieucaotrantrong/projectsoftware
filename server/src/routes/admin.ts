@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express';
 import pool from '../config/database';
 import { adminAuth } from '../middleware/adminAuth';
 import { RowDataPacket } from 'mysql2';
+import { getAllUsers, getUserById, updateUser, deleteUser, createUser } from '../controllers/user.controller';
 
 const router = Router();
 
@@ -94,6 +95,13 @@ router.put('/deposits/:id/reject', adminAuth, async (req: Request, res: Response
         res.status(500).json({ error: 'Lỗi server' });
     }
 });
+
+// users management (protected)
+router.get('/users', adminAuth, getAllUsers);
+router.get('/users/:id', adminAuth, getUserById);
+router.post('/users', adminAuth, createUser); // <-- thêm tạo user
+router.put('/users/:id', adminAuth, updateUser);
+router.delete('/users/:id', adminAuth, deleteUser);
 
 export default router;
 
