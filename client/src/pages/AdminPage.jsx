@@ -5,7 +5,7 @@ import SupportManagement from '../components/SupportManagement';
 import OrderManagement from '../components/OrderManagement';
 import WalletManagement from '../components/WalletManagement';
 import Footers from '../components/Footers';
-
+import { TECarousel, TECarouselItem } from 'tw-elements-react';
 const AdminPage = () => {
     const [activeTab, setActiveTab] = useState('products');
     const [products, setProducts] = useState([]);
@@ -182,7 +182,51 @@ const AdminPage = () => {
                         Đăng xuất
                     </button>
                 </header>
+                {/* Caursel  */}
+                <div className="mt-32 w-full max-w-[1200px] mx-auto">
+                    <TECarousel ride="carousel" showIndicators showControls>
+                        <div className="relative w-full h-64 overflow-hidden after:clear-both after:block after:content-['']">
 
+                            {/* Slide 1 */}
+                            <TECarouselItem
+                                itemID={1}
+                                data-te-carousel-active
+                                className="relative float-left -mr-[100%] hidden w-full h-full transition-transform duration-700 ease-in-out"
+                            >
+                                <img
+                                    src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Banner/23/05/23050828d3211ce7b91e92473a3690b3.jpg"
+                                    className="w-full h-full object-cover rounded-lg"
+                                    alt="Slide 1"
+                                />
+                            </TECarouselItem>
+
+                            {/* Slide 2 */}
+                            <TECarouselItem
+                                itemID={2}
+                                className="relative float-left -mr-[100%] hidden w-full h-full transition-transform duration-700 ease-in-out"
+                            >
+                                <img
+                                    src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Banner/43/85/43854a7ba231f17252741049cc5a099a.png"
+                                    className="w-full h-full object-cover rounded-lg"
+                                    alt="Slide 2"
+                                />
+                            </TECarouselItem>
+
+                            {/* Slide 3 */}
+                            <TECarouselItem
+                                itemID={3}
+                                className="relative float-left -mr-[100%] hidden w-full h-full transition-transform duration-700 ease-in-out"
+                            >
+                                <img
+                                    src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Banner/91/1b/911bdb7d43d18d76d89279f143d90f2c.png"
+                                    className="w-full h-full object-cover rounded-lg"
+                                    alt="Slide 3"
+                                />
+                            </TECarouselItem>
+
+                        </div>
+                    </TECarousel>
+                </div>
             </div>
 
 
@@ -190,10 +234,6 @@ const AdminPage = () => {
             {/* Content */}
             {activeTab === 'products' ? (
                 <>
-                    <h1 className="text-3xl font-bold mb-6 text-center">
-                        Quản lý sản phẩm
-                    </h1>
-
                     {/* Form */}
                     <form
                         onSubmit={handleSubmit}

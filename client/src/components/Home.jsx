@@ -11,7 +11,7 @@ import {
     FaShoppingCart,
     FaMapMarkerAlt,
     FaSearch,
-    FaWallet,  // Thêm icon ví
+    FaWallet,  
 } from "react-icons/fa";
 
 export default function Home({ onFilterChange }) {
@@ -203,7 +203,8 @@ export default function Home({ onFilterChange }) {
                 const name = item.name.toLowerCase();
                 const search = searchTerm.toLowerCase();
 
-                // Tìm theo từ đầu tiên của mỗi từ
+                /*----------------------------------------  
+                ------------------------------------------*/
                 const words = name.split(' ');
                 return words.some(word => word.startsWith(search)) ||
                     name.includes(search);
