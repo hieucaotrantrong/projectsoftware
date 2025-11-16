@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { FaHeart } from "react-icons/fa";
 
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
 import Notifications from './Notifications';
@@ -11,11 +12,12 @@ import {
     FaShoppingCart,
     FaMapMarkerAlt,
     FaSearch,
-    FaWallet,  
+    FaWallet,
 } from "react-icons/fa";
 
 export default function Home({ onFilterChange }) {
     const [user, setUser] = useState(null);
+    const [favorites, setFavorites] = useState([]);
     const [showLocationModal, setShowLocationModal] = useState(false);
     const [provinces, setProvinces] = useState([]);
     const [districts, setDistricts] = useState([]);
@@ -56,7 +58,8 @@ export default function Home({ onFilterChange }) {
         } else {
             setCurrentAddress('Địa chỉ của bạn');
         }
-
+        const favs = JSON.parse(localStorage.getItem('favorites')) || [];
+        setFavorites(favs);
         // Load provinces on component mount
         fetchProvinces();
     }, []);
@@ -286,17 +289,25 @@ export default function Home({ onFilterChange }) {
                                     onClick={() => navigate('/wallet')}
                                 >
                                     <FaWallet />
-                                    <span>Ví</span>
+
                                 </div>
 
                                 <div
                                     className="flex items-center gap-1 text-sm hover:underline cursor-pointer"
                                     onClick={() => navigate('/orders')}
                                 >
-                                    <span>📦</span>
+
                                     <span>Đơn hàng</span>
                                 </div>
-
+                                <div
+                                    className="flex items-center gap-1 text-sm cursor-pointer hover:underline"
+                                    onClick={() => navigate('/favorites')}
+                                >
+                                    <FaHeart
+                                        className={`transition-all ${favorites.length > 0 ? 'text-red-600 scale-110' : 'text-gray-700 hover:text-red-500'}`}
+                                    />
+                                    <span>({favorites.length})</span>
+                                </div>
                                 <div className="flex items-center gap-2">
                                     <img
                                         src={user.avatar || 'https://i.pravatar.cc/40'}

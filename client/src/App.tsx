@@ -24,6 +24,9 @@ import WalletPage from './components/WalletPage';
 import OrderHistory from './components/OrderHistory';
 import { useState } from 'react';
 
+/* 🆕 Thêm import trang yêu thích */
+import FavoritePage from './pages/FavoritePage';
+
 /*----------------------------------
 Home Create
 -----------------------------------*/
@@ -40,8 +43,9 @@ function HomePage() {
     </>
   );
 }
+
 /*----------------------------------
-HomePage
+Home Logged In Page
 -----------------------------------*/
 function HomeLoggedInPage() {
   const [hasFilter, setHasFilter] = useState(false);
@@ -60,8 +64,9 @@ function HomeLoggedInPage() {
     </>
   );
 }
+
 /*----------------------------------
-Router
+App Router
 -----------------------------------*/
 function App() {
   return (
@@ -77,13 +82,21 @@ function App() {
           <Route path="/cartpay" element={<CartPayPage />} />
           <Route path="/support" element={<SupportPage />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/admin" element={
-            <PrivateRoute>
-              <AdminPage />
-            </PrivateRoute>
-          } />
           <Route path="/wallet" element={<WalletPage />} />
           <Route path="/orders" element={<OrderHistory />} />
+
+          {/* 🆕 Trang yêu thích */}
+          <Route path="/favorites" element={<FavoritePage />} />
+
+          {/* Admin (Private Route) */}
+          <Route
+            path="/admin"
+            element={
+              <PrivateRoute>
+                <AdminPage />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </Router>
     </CartProvider>
@@ -91,15 +104,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-

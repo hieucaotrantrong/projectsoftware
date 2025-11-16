@@ -285,13 +285,13 @@ const AdminUsers = () => {
                                                 onClick={() => startEdit(u)}
                                                 className="bg-yellow-400 text-black px-3 py-1 rounded mr-2 hover:bg-yellow-500"
                                             >
-                                                ✏ Sửa
+                                                Sửa
                                             </button>
                                             <button
                                                 onClick={() => handleDelete(u.id)}
                                                 className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                                             >
-                                                🗑 Xóa
+                                                Xóa
                                             </button>
                                         </>
                                     )}
