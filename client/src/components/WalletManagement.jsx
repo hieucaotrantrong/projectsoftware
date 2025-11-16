@@ -48,7 +48,7 @@ export default function WalletManagement() {
 
     return (
         <div>
-            <h1 className="text-3xl font-bold mb-6 text-center">Quản lý ví</h1>
+
 
             <div className="bg-white rounded-lg shadow overflow-hidden">
                 <table className="w-full">
@@ -76,8 +76,8 @@ export default function WalletManagement() {
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <span className={`px-2 py-1 text-xs rounded-full ${request.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                                            request.status === 'approved' ? 'bg-green-100 text-green-800' :
-                                                'bg-red-100 text-red-800'
+                                        request.status === 'approved' ? 'bg-green-100 text-green-800' :
+                                            'bg-red-100 text-red-800'
                                         }`}>
                                         {request.status === 'pending' ? 'Chờ duyệt' :
                                             request.status === 'approved' ? 'Đã duyệt' : 'Từ chối'}

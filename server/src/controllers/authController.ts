@@ -76,7 +76,7 @@ export default {
                 return res.status(401).json({ error: 'Mật khẩu không đúng' });
             }
 
-
+            console.log("SIGN SECRET:", process.env.JWT_SECRET);
             const token = jwt.sign(
                 { userId: user.id },
                 process.env.JWT_SECRET as string,
